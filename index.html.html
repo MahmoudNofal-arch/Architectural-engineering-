@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional architectural engineer portfolio. View projects, expertise, and get in touch.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Architectural Engineer - Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --accent-dark: #2980b9;
+      --bg-light: #f8f9fa;
+      --bg-white: #ffffff;
+      --text-dark: #2c3e50;
+      --text-gray: #7f8c8d;
+      --border-light: #ecf0f1;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--primary);
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    p {
+      color: var(--text-gray);
+      margin-bottom: 16px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 40px;
+      position: sticky;
+      top: 0;
+      background: var(--bg-white);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin-left: 32px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-gray);
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding-top: 60px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .hero h1 {
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--text-gray);
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border: 2px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--bg-white);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-white);
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin-bottom: 60px;
+    }
+
+    .section-intro p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .project-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(52, 152, 219, 0.1);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-gray);
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .project-content {
+      padding: 32px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .project-meta {
+      font-size: 13px;
+      color: var(--text-gray);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .project-description {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      background: var(--bg-light);
+      color: var(--primary);
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .about-section {
+      background: var(--bg-light);
+      padding: 80px 0;
+    }
+
+    .about-content {
+      max-width: 700px;
+    }
+
+    .about-content p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .expertise {
+      margin-top: 40px;
+    }
+
+    .expertise h3 {
+      margin-bottom: 20px;
+    }
+
+    .expertise-list {
+      list-style: none;
+      columns: 2;
+      gap: 20px;
+    }
+
+    .expertise-list li {
+      padding: 8px 0;
+      color: var(--text-gray);
+      position: relative;
+      padding-left: 24px;
+      break-inside: avoid;
+    }
+
+    .expertise-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .contact-section {
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .contact-section h2 {
+      margin-bottom: 24px;
+    }
+
+    .contact-intro {
+      max-width: 500px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      color: var(--text-gray);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-gray);
+      font-size: 14px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 0 16px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      h2 {
+        font-size: 28px;
+        margin-bottom: 32px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin: 0 16px;
+      }
+
+      .hero {
+        padding-top: 40px;
+        padding-bottom: 60px;
+      }
+
+      .projects-grid {
+        gap: 24px;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
+
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .expertise-list {
+        columns: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav>
+      <div class="logo">ARCHITECT</div>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Architectural Engineer</h1>
+      <p class="subtitle">Designing spaces. Building solutions. Creating lasting structures.</p>
+      <div class="cta-group">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn">Get in Touch</a>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-intro">
+        <h2>Featured Projects</h2>
+        <p>A selection of recent architectural and engineering projects showcasing design excellence, technical expertise, and successful outcomes.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- PROJECT CARD 1 -->
+        <div class="project-card">
+          <div class="project-image">
+            [Add project image here]
+          </div>
+          <div class="project-content">
+            <h3>Project Name</h3>
+            <p class="project-meta">Location • Year</p>
+            <p class="project-description">
+              Brief description of the project. Explain what was built, the scope, and the key achievements. Keep it concise but informative.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Design</span>
+              <span class="tag">Construction</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT CARD 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            [Add project image here]
+          </div>
+          <div class="project-content">
+            <h3>Project Name</h3>
+            <p class="project-meta">Location • Year</p>
+            <p class="project-description">
+              Brief description of the project. Explain what was built, the scope, and the key achievements. Keep it concise but informative.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Design</span>
+              <span class="tag">Engineering</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT CARD 3 -->
+        <div class="project-card">
+          <div class="project-image">
+            [Add project image here]
+          </div>
+          <div class="project-content">
+            <h3>Project Name</h3>
+            <p class="project-meta">Location • Year</p>
+            <p class="project-description">
+              Brief description of the project. Explain what was built, the scope, and the key achievements. Keep it concise but informative.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Consulting</span>
+              <span class="tag">Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <h2>About</h2>
+      <div class="about-content">
+        <p>
+          [Your father's professional background. Mention years of experience, education, specializations, and what drives his work.]
+        </p>
+        <p>
+          [More details about his approach, philosophy, and what makes his work distinctive.]
+        </p>
+
+        <div class="expertise">
+          <h3>Areas of Expertise</h3>
+          <ul class="expertise-list">
+            <li>Architectural Design</li>
+            <li>Structural Engineering</li>
+            <li>Project Management</li>
+            <li>Building Analysis</li>
+            <li>Sustainable Design</li>
+            <li>Code Compliance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Get in Touch</h2>
+      <p class="contact-intro">
+        Interested in discussing a project or collaborating on an architectural initiative? Feel free to reach out.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:your-email@example.com" class="btn btn-primary">Send Email</a>
+        <a href="https://linkedin.com" class="btn">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2026 Architectural Engineer. All rights reserved.</p>
+    </footer>
+  </main>
+</body>
+</html>
